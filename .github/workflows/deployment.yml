@@ -1,0 +1,18 @@
+name: Deployment
+on:
+  push:
+    branches:
+      - master
+jobs:
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - name: executing remote ssh commands using key
+      uses: appleboy/ssh-action@v0.1.7
+      with:
+        host: 91.107.235.64
+        username: root
+        key: ${{ secrets.KEY }}
+        script: cd /mnt/frontend-3/hoomit.mkay.dev && git pull && yarn && yarn build
