@@ -1,17 +1,20 @@
 <template>
-  <header class="mx-auto max-w-5xl bg-white px-2 py-2 flex justify-between">
-    <Logo />
-    <Navigation />
+  <header>
+    <v-footer>
+      <v-container>
+        <v-row>
+          <v-col cols="12" sm="6"><Logo /></v-col>
+          <v-col cols="12" sm="6" class="justify-end">
+            <nav>
+              <router-link to="/">Startseite</router-link>
+            </nav>
+          </v-col>
+        </v-row>
+      </v-container></v-footer
+    >
   </header>
 </template>
 
 <script setup lang="ts">
 import Logo from "@/components/Logo.vue";
-import Navigation from "@/components/Navigation.vue";
-// @ts-ignore
-import {useNavigationStore} from '@/store/navigation';
-import { storeToRefs } from "pinia";
-
-let store = useNavigationStore();
-let { open } = storeToRefs(store);
 </script>
