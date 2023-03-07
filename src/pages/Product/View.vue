@@ -8,10 +8,13 @@ const store = useBackendStore();
 let { url } = storeToRefs(store);
 let route = useRoute();
 
+let stock = ref(0);
+
 const load = async function () {
   const request = await fetch(url.value + "/api/products/" + route.params.id);
   const data = await request.json();
   item.value = data;
+  stock.value = data.stock;
   console.log(data);
 };
 
@@ -20,7 +23,7 @@ const getStock = async function () {
     url.value + "/api/products/" + route.params.id + "/stock"
   );
   const data = await request.json();
-  console.log(data);
+  stock.value = data;
 };
 
 const buy = async function () {
@@ -35,19 +38,19 @@ const buy = async function () {
     }
   );
   const data = await request.json();
+  stock.value = data.stock;
   console.log(data);
 };
 
 const refill = async function () {
   const request = await fetch(
-    "http://stockmanager.mooo.com/api/products/" +
-      route.params.id +
-      "/refill?amount=1",
+    url.value + "/api/products/" + route.params.id + "/refill?amount=1",
     {
       method: "PUT",
     }
   );
   const data = await request.json();
+  stock.value++;
   console.log(data);
 };
 
@@ -61,7 +64,14 @@ onMounted(function () {
 <template>
   <v-container>
     <v-row>
-      <v-col cols="12" sm="6">{{ item }}</v-col>
+      <v-col cols="12" sm="6">
+        <img
+          src="https://via.placeholder.com/480x320.png?text=Hoom+IT"
+          alt=""
+        />
+        <h2>{{ item.name }}</h2>
+        <p>Stock: {{ stock }}</p>
+      </v-col>
       <v-col cols="12" sm="6"
         ><v-btn @click="getStock()">getStock</v-btn>
         <v-btn @click="buy()">reserve</v-btn>
