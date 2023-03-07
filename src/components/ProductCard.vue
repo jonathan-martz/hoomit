@@ -17,10 +17,12 @@ const load = async function () {
 };
 
 interface Product {
-  name: string
+  name: string,
+  value: {}
 }
 
-let item : Product = ref({});
+// @ts-ignore
+let item: Product = ref({});
 
 onMounted(function () {
   load();

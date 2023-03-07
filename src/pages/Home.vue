@@ -11,7 +11,7 @@
   <section class="product-grid">
     <v-container>
       <v-row>
-        <v-col cols="12" sm="4" v-for="product in products">
+        <v-col v-for="product in products" :key="product.id" cols="12" sm="4">
           <ProductCard :identifier="product.id" />
         </v-col>
       </v-row>
@@ -23,11 +23,22 @@
 import { onMounted, ref } from "vue";
 import ProductCard from "@/components/ProductCard.vue";
 
-const products = ref([]);
+const products: Product = ref([
+  { id: 123, name: "Loading", stock: 123, reservations: 1 },
+  { id: 123, name: "Loading", stock: 123, reservations: 1 },
+]);
+
+interface Product {
+  name: string;
+  id: number;
+  stock: number;
+  reservations: number;
+}
 
 const load = async function () {
   const request = await fetch("http://stockmanager.mooo.com/api/products");
   const data = await request.json();
+  // @ts-ignore
   products.value = data.slice(-9);
 };
 
