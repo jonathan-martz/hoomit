@@ -9,7 +9,7 @@
     </p>
   </section>
   <section class="product-grid">
-    <v-container class="bg-surface-variant">
+    <v-container>
       <v-row>
         <v-col cols="12" sm="4" v-for="product in products">
           <ProductCard :identifier="product.id" />
