@@ -1,5 +1,5 @@
 <template>
-  <section class="homepage">
+  <section class="homepage mx-a text-center">
     <h2 class="font-bold text-lg">
       Willkommen auf der Startseite dieses Projektes
     </h2>
@@ -23,10 +23,7 @@
 import { onMounted, ref } from "vue";
 import ProductCard from "@/components/ProductCard.vue";
 
-const products: Product = ref([
-  { id: 123, name: "Loading", stock: 123, reservations: 1 },
-  { id: 123, name: "Loading", stock: 123, reservations: 1 },
-]);
+const products: Product[] = ref([]);
 
 interface Product {
   name: string;

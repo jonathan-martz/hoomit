@@ -17,8 +17,8 @@ const load = async function () {
 };
 
 interface Product {
-  name: string,
-  value: {}
+  name: string;
+  value: {};
 }
 
 // @ts-ignore
@@ -33,12 +33,9 @@ onMounted(function () {
   <v-card class="mx-auto" max-width="344">
     <v-card-text>
       <router-link :to="'/product/' + props.identifier">
-        <img
-          src="https://via.placeholder.com/480x320.png?text=Hoom+IT"
-          alt=""
-        />
+        <v-img src="https://via.placeholder.com/480x320.png?text=Hoom+IT" />
       </router-link>
-      <h2>{{ item.name }}</h2>
+      <h2 class="my-3">{{ item.name }}</h2>
       <p class="text--primary">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad voluptate
         molestias reiciendis, consequatur esse placeat nesciunt cum sunt sequi.

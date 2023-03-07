@@ -1,11 +1,11 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import { createPinia } from 'pinia'
- // @ts-ignore
+// @ts-ignore
 import router from './router';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faEdit } from '@fortawesome/free-solid-svg-icons'
 
 // Vuetify
 import 'vuetify/styles'
@@ -19,7 +19,7 @@ const vuetify = createVuetify({
 })
 
 
-library.add(faBars)
+library.add(faBars, faEdit)
 
 const pinia = createPinia()
 
